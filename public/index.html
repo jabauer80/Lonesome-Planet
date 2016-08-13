@@ -8,9 +8,9 @@
   <!--Bootstrap latest compiled and minified CSS-->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.2/css/bootstrap-dialog.min.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.2/css/bootstrap-dialog.min.css" rel="stylesheet">
 
   <!--Custom CSS-->
   <link href="app/content/css/app.css" rel="stylesheet" />
@@ -23,28 +23,16 @@
   <div ng-view class="container"></div>
 
   <!--Third-party JS-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.2/js/bootstrap-dialog.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+  <script src="//code.angularjs.org/1.5.0/angular-route.js"></script>
+  <script src="//cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+  <script src="//www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.2/js/bootstrap-dialog.js"></script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-  <script src="https://code.angularjs.org/1.5.0/angular-route.js"></script>
-  <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
-
-  <!-- initialize firebase -->
-  <script>
-     var config = {
-        apiKey: "AIzaSyBm8LCjJaMWrZ7KNVBv5lzOZUJEedvWI8o",
-        authDomain: "digital-jupiter.firebaseapp.com",
-        databaseURL: "https://digital-jupiter.firebaseio.com",
-        storageBucket: "digital-jupiter.appspot.com",
-    };
-    firebase.initializeApp(config);
-    </script>
   <!--main app module-->
   <script src="app/app.module.js"></script>
 
@@ -58,7 +46,6 @@
   <!--landing module-->
   <script src="app/landing/landing.module.js"></script>
   <script src="app/landing/config.route.js"></script>
-
 
   <!--core module-->
   <script src="app/core/core.module.js"></script>
@@ -84,6 +71,11 @@
   <script src="app/roadmap/directives/roadmapTable.directive.js"></script>
   <script src="app/roadmap/directives/roadmapForm.directive.js"></script>
 
+  <!--project-->
+  <script src="app/project/project.module.js"></script>
+  <script src="app/project/config.route.js"></script>
+  <script src="app/project/project.service.js"></script>
+  <script src="app/project/project.controller.js"></script>
 
 </body>
 
