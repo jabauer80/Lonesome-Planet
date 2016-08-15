@@ -10,7 +10,8 @@
 
     var service = {
       root: root,
-      users: root.child('users')
+      users: root.child('users'),
+      allocations:root.child("allocations")
       //emails: root.child('emails'),
       //textMessages: root.child('textMessages')
     };

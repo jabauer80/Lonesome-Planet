@@ -13,22 +13,26 @@
 
         var roadmaps = {};
 
+        // toastr.info('Are you the 6 fingered man?')
+
         var getRoadmapsById = function (uid) {
             roadmaps = $firebaseArray(firebaseDataService.users.child(uid).child("roadmaps"));
             return roadmaps;
         };
 
         var addRoadmap = function (item) {
-            roadmaps.$add(item);
+            roadmaps.$add(item)
+                .then(toastr.success("Roadmap created successfully!"));
         };
 
         var updateRoadmap = function (id) {
-            roadmaps.$save(id);
+            roadmaps.$save(id)
+                .then(toastr.success("Roadmap updated successfully!"));;
         };
 
         var removeRoadmap = function (id) {
-            console.log(id);
-            roadmaps.$remove(id);
+            roadmaps.$remove(id)
+                .then(toastr.success("Roadmap deleted successfully!"));
         };
 
         var reset = function () {

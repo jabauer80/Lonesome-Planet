@@ -5,8 +5,10 @@
         .module("app.core")
         .constant("PROTECTED_PATHS",
             [
-                "/waitlist",
-                "/dashboard"
+                //"/waitlist",
+                "/dashboard",
+                "/roadmaps",
+               // "/projects"
             ]);
 
 })();

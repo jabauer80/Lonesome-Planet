@@ -1,0 +1,286 @@
+<!--heading-->
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="breadcrumb">
+            <li><a href="#/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li class="active">Settings</li>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" data-target="#workStatusIndicators">Work Status Indicators</a></li>
+        <li><a data-toggle="tab" data-target="#allocationCategories">Allocation Categories</a></li>
+        <li><a data-toggle="tab" data-target="#hierarchyUnits">Hierarchy Units</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="workStatusIndicators" class="tab-pane fade in active">
+            <div class="panel-body">
+                <!--toolbar-->
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <div class="pull-left">
+                            <button class="btn btn-success pull-left" data-toggle="modal" data-target="#create">Create New Work Status Indicator</button>
+                        </div>
+                        <div class="pull-right" style="padding-top:30px">
+                            <div class="box-tools" style="display:inline-table">
+                                <div class="input-group">
+                                    <input type="text" class="form-control input-sm ng-valid ng-dirty" placeholder="Search" ng-change="searchDB()" ng-model="searchText"
+                                        name="table_search" title="" tooltip="" data-original-title="Min character length is 3">
+                                    <span class="input-group-addon">Search</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--table-->
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <table class="table table-bordered table-hover table-striped ">
+                            <thead>
+                                <tr class="info">
+                                    <th>Title <i class="fa fa-sort"></i></th>
+                                    <th>Start Date <i class="fa fa-sort"></i></th>
+                                    <th width="120"></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="(id,roadmap) in roadmaps">
+                                <tr>
+                                    <td>{{ roadmap.roadmapTitle }}</td>
+                                    <td>{{ roadmap.roadmapStartDate }}</td>
+                                    <td>
+                                        <button data-toggle="modal" ng-click="editRoadmap(id)" data-target="#edit" class="btn btn-xs btn-primary">Edit</button>
+                                        <button ng-click="removeRoadmap(id)" class="btn btn-xs btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div id="allocationCategories" class="tab-pane fade ">
+            <div class="panel-body">
+                <!--toolbar-->
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <div class="pull-left">
+                            <button class="btn btn-success pull-left" data-toggle="modal" data-target="#createAllocationCategory">Create New Allocation Category</button>
+                        </div>
+                        <div class="pull-right" style="padding-top:30px">
+                            <div class="box-tools" style="display:inline-table">
+                                <div class="input-group">
+                                    <input type="text" class="form-control input-sm ng-valid ng-dirty" placeholder="Search" ng-change="searchDB()" ng-model="searchText"
+                                        name="table_search" title="" tooltip="" data-original-title="Min character length is 3">
+                                    <span class="input-group-addon">Search</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--table-->
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <table class="table table-bordered table-hover table-striped ">
+                            <thead>
+                                <tr class="info">
+                                    <th>Allocation Category Code <i class="fa fa-sort"></i></th>
+                                    <th>Allocation Category Label <i class="fa fa-sort"></i></th>
+                                    <th>Effective State Date <i class="fa fa-sort"></i></th>
+                                    <th>Effective End Date <i class="fa fa-sort"></i></th>
+                                    <th width="120"></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="($id,allocation) in allocations">
+                                <tr>
+                                    <td>{{ allocation.categoryCode }}</td>
+                                    <td>{{ allocation.categoryLabel }}</td>
+                                    <td>{{ allocation.effectiveStartDate }}</td>
+                                    <td>{{ allocation.effectiveEndDate }}</td>
+                                    <td>
+                                        <button data-toggle="modal" ng-click="editRoadmap(id)" data-target="#edit" class="btn btn-xs btn-primary">Edit</button>
+                                        <button ng-click="removeAllocation($id)" class="btn btn-xs btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--create modal-->
+        <div class="modal fade" id="createAllocationCategory" tabindex="-1" role="dialog" aria-labelledby="createLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" ng-click="reset()" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="createLabel">Create New Allocation Category</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form name="create">
+                            <div class="form-group">
+                                <label class="control-label">Allocation Category Code:</label>
+                                <input ng-model="allocation.categoryCode" type="text" placeholder="Allocation Category Code" class="form-control" required/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Allocation Category Label:</label>
+                                <input ng-model="allocation.categoryLabel" type="text" placeholder="Allocation Category Label" class="form-control" required/>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class='col-sm-6'>
+                                        <label class="control-label">Effective Start Date:</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="control-label">Effective End Date:</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-sm-6'>
+                                        <div class="form-group">
+                                            <div class='input-group date' id='datepicker1'>
+                                                <input type='text' class="form-control" ng-model="allocation.effectiveStartDate" placeholder="Effective Start Date" required
+                                                />
+                                                <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class='input-group date' id='datepicker2'>
+                                                <input type='text' class="form-control" ng-model="allocation.effectiveEndDate" placeholder="Effective End Date" required
+                                                />
+                                                <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" ng-click="reset()">Cancel</button>
+                                <button type="submit" ng-disabled="create.$invalid" class="btn btn-primary" data-ng-click="addAllocation()">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--edit modal-->
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="editLabel">Edit Roadmap</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="edit">
+                        <div class="form-group">
+                            <label for="title" class="control-label">Title:</label>
+                            <input ng-model="roadmap.roadmapTitle" type="text" placeholder="Roadmap title" name="title" id="title" class="form-control"
+                                required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="startDate" class="control-label">Start Date:</label>
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datepicker2'>
+                                            <input type='text' class="form-control" ng-model="roadmap.roadmapStartDate" required />
+                                            <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-ng-click="reset()">Cancel</button>
+                                <button type="submit" ng-disabled="edit.$invalid" class="btn btn-primary" data-ng-click="updateRoadmap(roadmap)">Update</button>
+                            </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datepicker1').datepicker();
+            });
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $('#datepicker2').datepicker();
+            });
+        </script>
+    </div>
+
+
+
+
+
+
+    <div id="hierarchyUnits" class="tab-pane fade">
+        <div class="panel-body">
+            <!--toolbar-->
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <div class="pull-left">
+                        <button class="btn btn-success pull-left" data-toggle="modal" data-target="#create">Create New Hierarchy Unit</button>
+                    </div>
+                    <div class="pull-right" style="padding-top:30px">
+                        <div class="box-tools" style="display:inline-table">
+                            <div class="input-group">
+                                <input type="text" class="form-control input-sm ng-valid ng-dirty" placeholder="Search" ng-change="searchDB()" ng-model="searchText"
+                                    name="table_search" title="" tooltip="" data-original-title="Min character length is 3">
+                                <span class="input-group-addon">Search</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--table-->
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <table class="table table-bordered table-hover table-striped ">
+                        <thead>
+                            <tr class="info">
+                                <th>Title <i class="fa fa-sort"></i></th>
+                                <th>Start Date <i class="fa fa-sort"></i></th>
+                                <th width="120"></th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="(id,roadmap) in roadmaps">
+                            <tr>
+                                <td>{{ roadmap.roadmapTitle }}</td>
+                                <td>{{ roadmap.roadmapStartDate }}</td>
+                                <td>
+                                    <button data-toggle="modal" ng-click="editRoadmap(id)" data-target="#edit" class="btn btn-xs btn-primary">Edit</button>
+                                    <button ng-click="removeRoadmap(id)" class="btn btn-xs btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

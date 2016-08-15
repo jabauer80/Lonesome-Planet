@@ -2,18 +2,20 @@
     "use strict";
 
     angular
-        .module("app.project")
+        .module("app.setting")
         .config(configFunction);
 
     configFunction.$inject = ["$routeProvider"];
 
     function configFunction($routeProvider) {
-        $routeProvider.when("/projects", {
-            templateUrl: "app/project/project.html",
-            controller: "ProjectController",
-            controllerAs: "vm",
-            resolve: { user: resolveUser }
-        });
+        $routeProvider
+            .when("/settings", {
+                templateUrl: "app/setting/setting.html",
+                controller: "SettingController",
+                controllerAs: "vm",
+                resolve: { user: resolveUser }
+            });
+          
     }
 
     resolveUser.$inject = ['authService'];

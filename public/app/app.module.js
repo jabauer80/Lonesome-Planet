@@ -16,7 +16,8 @@
             "app.layout",
             "app.dashboard",
             "app.roadmap",
-            "app.project"
+            "app.project",
+            "app.setting"
         ])
         .config(configFunction)
         .run(runFunction);
@@ -48,6 +49,24 @@
                 $location.path("/");
             }
         });
+    }
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
     }
 
 })();
