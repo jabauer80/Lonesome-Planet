@@ -1,0 +1,25 @@
+<!--heading-->
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="breadcrumb">
+            <li><a href="#/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li class="active">Roadmaps</li>
+        </ul>
+    </div>
+</div>
+
+<!--toolbar-->
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="pull-left">
+            <button class="btn btn-success pull-left" data-toggle="modal" data-target="#create">Create New
+                Roadmap
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<ng-include src="'app/roadmaps/roadmapList.html'"></ng-include>
+<ng-include src="'app/roadmaps/roadmapAddModal.html'"></ng-include>
+<ng-include src="'app/roadmaps/roadmapEditModal.html'"></ng-include>

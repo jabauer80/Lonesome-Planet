@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -17,24 +17,25 @@
 
     function register(user) {
       return authService.register(user)
-        .then(function() {
+        .then(function () {
           return vm.login(user);
         })
-        .then(function() {
+        .then(function () {
           return authService.sendWelcomeEmail(user.email);
         })
-        .catch(function(error) {
+        .catch(function (error) {
           vm.error = error;
         });
     }
 
     function login(user) {
       return authService.login(user)
-        .then(function() {
+        .then(function () {
           $location.path('/dashboard');
         })
-        .catch(function(error) {
+        .catch(function (error) {
           vm.error = error;
+
         });
     }
   }

@@ -7,11 +7,11 @@
     angular.module("app.dashboard")
         .controller("DashboardController", DashboardController);
 
-    DashboardController.$inject = ["$scope", "roadmapService", "user"]
+    DashboardController.$inject = ["$scope", "roadmapService"]
 
-    function DashboardController($scope, roadmapService, user) {
+    function DashboardController($scope, roadmapService) {
         var vm = this;
-        $scope.roadmaps = roadmapService.getRoadmapsById(user.uid);
+    vm.roadmaps = roadmapService.getRoadmaps();
         // console.log(user.uid);
 
         // vm.parties  = partyService.getPartiesByUser(user.uid);

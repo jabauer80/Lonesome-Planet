@@ -14,8 +14,8 @@
             </div>
             <div class="panel-body">
                 <div class="list-group">
-                    <div ng-repeat="(id,roadmap) in roadmaps">
-                        <a href="#roadmaps" class="list-group-item">{{ roadmap.roadmapTitle }} - {{roadmap.roadmapStartDate}}</a>
+                    <div ng-repeat="roadmap in vm.roadmaps">
+                        <a href="#roadmaps" class="list-group-item">{{ roadmap.title }} - {{roadmap.startDate}} to</a>
                     </div>
                 </div>
             </div>

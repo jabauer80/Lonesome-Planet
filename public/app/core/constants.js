@@ -4,11 +4,11 @@
     angular
         .module("app.core")
         .constant("PROTECTED_PATHS",
-            [
-                //"/waitlist",
-                "/dashboard",
-                "/roadmaps",
-               // "/projects"
-            ]);
+        [
+            //"/waitlist",
+            "/dashboard",
+            "/roadmaps",
+            // "/projects"
+        ]);
 
 })();

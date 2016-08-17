@@ -1,18 +1,13 @@
 (function () {
     "use strict";
 
-    angular
-        .module("app.auth")
+    angular.module("app.auth")
         .factory("authService", authService);
 
-    authService.$inject =
-        [
-            "$firebaseAuth",
-            "firebaseDataService",
-            "roadmapService"
-        ];
+    // authService.$inject = ["$firebaseAuth", "firebaseDataService", "roadmapService"];
+    authService.$inject = ["$firebaseAuth", "firebaseDataService"];
 
-    function authService($firebaseAuth, firebaseDataService, roadmapService) {
+    function authService($firebaseAuth, firebaseDataService) {
         var firebaseAuthObject = $firebaseAuth();
 
         var service = {
@@ -33,11 +28,14 @@
         }
 
         function login(user) {
-            return firebaseAuthObject.$signInWithEmailAndPassword(user.email, user.password);
+            return firebaseAuthObject.$signInWithEmailAndPassword(user.email, user.password)
+                .then(function () {
+                    console.log("AUTHENTICATED")
+                });
         }
 
         function logout() {
-            roadmapService.reset();
+            // roadmapService.reset();
             firebaseAuthObject.$signOut();
         }
 

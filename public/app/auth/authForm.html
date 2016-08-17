@@ -2,13 +2,9 @@
 
     <h2 class="form-signin-heading" ng-bind="vm.formTitle"></h2>
 
-    <!--Server authentication error-->
-    <p ng-show="vm.error" class="text-danger" ng-bind="vm.error"></p>
-
     <!--Email input-->
-    <input ng-model="vm.user.email"
-           ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" type="email"
-           name="email" class="form-control" placeholder="Email address" required autofocus>
+    <input ng-model="vm.user.email" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" type="email"
+        name="email" class="form-control" placeholder="Email address" required autofocus>
 
     <!--Email error-->
     <div ng-show="authForm.$submitted">
@@ -17,8 +13,7 @@
     </div>
 
     <!--Password input-->
-    <input ng-model="vm.user.password" type="password" name="password" class="form-control" placeholder="Password"
-           required>
+    <input ng-model="vm.user.password" type="password" name="password" class="form-control" placeholder="Password" required>
 
     <!--Password error-->
     <div ng-show="authForm.$submitted">
@@ -26,4 +21,9 @@
     </div>
 
     <button class="btn btn-lg btn-primary btn-block" ng-bind="vm.formTitle" type="submit"></button>
+
+    <!--Server authentication error-->
+    <div class="panel-body" ng-show="vm.error">
+        <p ng-show="vm.error" class="text-danger" ng-bind="vm.error"></p>
+    </div>
 </form>
